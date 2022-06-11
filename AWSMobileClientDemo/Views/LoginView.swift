@@ -3,6 +3,7 @@ import SwiftUIComponents
 
 struct LoginView: View {
     @EnvironmentObject var mobileClientManager: MobileClientManager
+    @Environment(\.presentationMode) var presentationMode
     
     @State var username = ""
     @State var password = ""
@@ -17,6 +18,7 @@ struct LoginView: View {
             VStack {
                 Button("Sign In") {
                     mobileClientManager.signIn( username: username, password: password)
+                    presentationMode.wrappedValue.dismiss()
                 }
                     .pretty()
             }
