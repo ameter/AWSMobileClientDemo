@@ -6,12 +6,21 @@
 //
 
 import SwiftUI
+import AWSCore
 
 @main
 struct AWSMobileClientDemoApp: App {
+    
+    @ObservedObject var mobileClientManager = MobileClientManager()
+    
+    init() {
+        AWSDDLog.sharedInstance.logLevel = .verbose
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SessionView()
+                .environmentObject(mobileClientManager)
         }
     }
 }
